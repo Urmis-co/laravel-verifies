@@ -1,0 +1,29 @@
+{
+    "name": "urmis/verifies",
+    "authors": [
+        {
+            "name": "Mohammad.Eftekhari",
+            "email": "bluemmb22@gmail.com"
+        },
+        {
+            "name": "Shiri.Naeiim",
+            "email": "Shiri.Naeiim@gmail.com"
+        }
+    ],
+    "require": {},
+    "extra": {
+        "laravel": {
+            "providers": [
+                "urmis\\verifies\\VerifiesServiceProvider"
+            ],
+            "aliases": {
+                "Verifies": "Urmis\\Verifies\\Facade"
+            }
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Urmis\\Verifies\\": "src/"
+        }
+    }
+}
