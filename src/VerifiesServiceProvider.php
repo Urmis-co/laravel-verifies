@@ -19,6 +19,8 @@ class VerifiesServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__.'/../config/verifies.php' => config_path('verifies.php'),
         ], 'config');
+
+        $this->app->alias('verifies', Verifies::class);
     }
 
     /**

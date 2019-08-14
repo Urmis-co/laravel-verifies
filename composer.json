@@ -17,7 +17,7 @@
                 "urmis\\verifies\\src\\VerifiesServiceProvider"
             ],
             "aliases": {
-                "Verifies": "Urmis\\Verifies\\Facade"
+                "Verifies": "Urmis\\Verifies\\Facades\\VerifiesFacade"
             }
         }
     },
