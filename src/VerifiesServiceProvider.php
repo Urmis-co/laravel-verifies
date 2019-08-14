@@ -11,9 +11,14 @@ class VerifiesServiceProvider extends ServiceProvider
     public function boot(Filesystem $filesystem)
     {
         // TODO: Check if the project is not Lumen
+
         $this->publishes([
             __DIR__.'/../database/migrations/create_verifies_table.php' => $this->getMigrationFileName($filesystem),
         ], 'migrations');
+
+        $this->publishes([
+            __DIR__.'/../config/verifies.php' => config_path('verifies.php'),
+        ], 'config');
     }
 
     /**
