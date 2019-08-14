@@ -4,7 +4,7 @@ namespace Urmis\Verifies;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Verifies extends Model
+class Verify extends Model
 {
     /**
      * The table associated with the model.
