@@ -10,7 +10,7 @@ return [
 
             'numeric' => [
                 'class' => Urmis\Verifies\Generators\NumericCodeGenerator::class,
-                'length' => 5,
+                'length' => 6,
             ],
 
         ],
