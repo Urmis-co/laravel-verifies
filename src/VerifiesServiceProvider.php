@@ -20,7 +20,9 @@ class VerifiesServiceProvider extends ServiceProvider
             __DIR__.'/../config/verifies.php' => config_path('verifies.php'),
         ], 'config');
 
-        $this->app->alias('verifies', Verifies::class);
+        $this->app->singleton('verifies', function ($app) {
+            return new Verifies();
+        });
     }
 
     /**
