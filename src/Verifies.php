@@ -51,6 +51,7 @@ class Verifies
     public function sendSms(string $for, string $receiver, string $message, array $data, int $user_id=null)
     {
         $verify = $this->makeVerify($for, $receiver, $data, $user_id);
+        $message = $this->prepareMessage($message, $verify);
 
         try {
             $sms = $this->smsProvider->sendMessage($receiver, $message);
@@ -111,5 +112,18 @@ class Verifies
     protected function getCode()
     {
         return $this->codeGenerator->generate();
+    }
+
+    /**
+     * This function replaces :code with generated code in message
+     *
+     * @param $message
+     * @param $verify
+     * @return mixed
+     */
+    protected function prepareMessage($message, $verify)
+    {
+        $message = str_replace(':code', $verify->code, $message);
+        return $message;
     }
 }
