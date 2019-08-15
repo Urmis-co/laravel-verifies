@@ -22,15 +22,19 @@ class VerifiesServiceProvider extends ServiceProvider
 
         $this->app->singleton('verifies', function ($app) {
 
-            $codeGeneratorName = config('verifies.code.generator');
-            $codeGeneratorClass = config("verifies.code.generators.{$codeGeneratorName}.class");
-            $codeGenerator = new $codeGeneratorClass();
-
             $secretGeneratorName = config('verifies.secret.generator');
             $secretGeneratorClass = config("verifies.secret.generators.{$secretGeneratorName}.class");
             $secretGenerator = new $secretGeneratorClass();
 
-            return new Verifies($secretGenerator, $codeGenerator);
+            $codeGeneratorName = config('verifies.code.generator');
+            $codeGeneratorClass = config("verifies.code.generators.{$codeGeneratorName}.class");
+            $codeGenerator = new $codeGeneratorClass();
+
+            $smsProviderName = config('verifies.sms.provider');
+            $smsProviderClass = config("verifies.sms.providers.{$smsProviderName}.class");
+            $smsProvider = new $smsProviderClass();
+
+            return new Verifies($secretGenerator, $codeGenerator, $smsProvider);
         });
     }
 

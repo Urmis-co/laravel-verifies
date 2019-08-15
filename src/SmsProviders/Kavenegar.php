@@ -4,10 +4,20 @@ namespace Urmis\Verifies\SmsProviders;
 
 use Urmis\Verifies\Contracts\SmsProvider as SmsProviderContract;
 
-class Kavenegar implements SmsProviderContract
+class Kavenegar extends SmsProviderContract
 {
-    public function sendMessage($receiver, $for, $data, $user_id = null): bool
+    public function getProviderName(): string
     {
-        // TODO: Implement sendMessage() method.
+        return 'kavenegar';
+    }
+
+    public function sendMessage($receiver, $message)
+    {
+        $config = $this->getConfig();
+
+        $api = new \Kavenegar\KavenegarApi( $config['key'] );
+        $sender = $config['sender'];
+
+        $result = $api->Send($sender, $receiver, $message);
     }
 }

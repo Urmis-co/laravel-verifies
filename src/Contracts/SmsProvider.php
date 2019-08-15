@@ -2,12 +2,31 @@
 
 namespace Urmis\Verifies\Contracts;
 
-interface SmsProvider
+abstract class SmsProvider
 {
+    /**
+     * Get provider name
+     *
+     * @return string
+     */
+    abstract public function getProviderName(): string;
+
     /**
      * Message sender function
      *
-     * @return bool indicates that if the process was successful or not
+     * @throws \Exception
      */
-    public function sendMessage($receiver, $for, $data, $user_id=null): bool;
+    abstract public function sendMessage($receiver, $message);
+
+    /**
+     * Get provider config
+     *
+     * @return array
+     */
+    public function getConfig(): array
+    {
+        $provider = $this->getProviderName();
+        $config = config("verifies.providers.{$provider}");
+        return $config;
+    }
 }

@@ -4,6 +4,7 @@ namespace Urmis\Verifies;
 
 use Urmis\Verifies\Contracts\CodeGenerator;
 use Urmis\Verifies\Contracts\SecretGenerator;
+use Urmis\Verifies\Contracts\SmsProvider;
 
 class Verifies
 {
@@ -17,17 +18,24 @@ class Verifies
      */
     public $codeGenerator;
 
+    /**
+     * @var SmsProvider $smsProvider
+     */
+    public $smsProvider;
+
 
     /**
      * Verifies constructor.
      *
-     * @param $secretGenerator
-     * @param $codeGenerator
+     * @param SecretGenerator $secretGenerator
+     * @param CodeGenerator $codeGenerator
+     * @param SmsProvider $smsProvider
      */
-    public function __construct($secretGenerator, $codeGenerator)
+    public function __construct(SecretGenerator $secretGenerator, CodeGenerator $codeGenerator, SmsProvider $smsProvider)
     {
         $this->secretGenerator = $secretGenerator;
         $this->codeGenerator = $codeGenerator;
+        $this->smsProvider = $smsProvider;
     }
 
     public function getSecret()
