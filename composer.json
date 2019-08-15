@@ -14,7 +14,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "urmis\\verifies\\src\\VerifiesServiceProvider"
+                "Urmis\\Verifies\\VerifiesServiceProvider"
             ],
             "aliases": {
                 "Verifies": "Urmis\\Verifies\\Facades\\VerifiesFacade"
