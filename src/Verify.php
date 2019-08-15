@@ -64,20 +64,20 @@ class Verify extends Model
             $error = null;
 
             if ($this->isVerified() == true)
-                $error = "This code is verified before.";
+                $error = __('verifies.errors.verified_before');
 
             else if ($this->checkExpiration() == false)
-                $error = "This code is expired. Please try again to get new code.";
+                $error = __('verifies.errors.code_is_expired');
 
             else if ($this->checkTries() == false)
-                $error = "You have tried many times with wrong code. Please try again to get new code.";
+                $error = __('verifies.errors.many_tries');
 
             else if ($this->checkCode($code) == false) {
                 $remained_tries = $this->max_tries - $this->tries;
                 if ($remained_tries <= 0)
-                    $error = "You have tried many times with wrong code. Please try again to get new code.";
+                    $error = __('verifies.errors.many_tries');
                 else
-                    $error = "Code is wrong. You have {$remained_tries} remained tries.";
+                    $error = __('verifies.errors.wrong_code', ['remained_tries' => $remained_tries]);
             }
 
             if ( is_null($error) == false ) {
@@ -91,7 +91,7 @@ class Verify extends Model
         }
         catch (\Exception $e) {
             DB::rollBack();
-            $error = "Couldn't verify your code. Please try again.";
+            $error = __('verifies.errors.could_not_verify');
             return false;
         }
     }
@@ -147,5 +147,17 @@ class Verify extends Model
     public function checkCode(string $code)
     {
         return $this->code == $code;
+    }
+
+
+    /*
+     *
+     *
+     *  Static Helpers
+     */
+
+    public static function getWithSecret(string $secret)
+    {
+        return Verify::where('secret', $secret)->first();
     }
 }

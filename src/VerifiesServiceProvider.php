@@ -20,6 +20,8 @@ class VerifiesServiceProvider extends ServiceProvider
             __DIR__.'/../config/verifies.php' => config_path('verifies.php'),
         ], 'config');
 
+        $this->loadTranslationsFrom(realpath(__DIR__.'/../resources/lang'), 'verifies');
+
         $this->app->singleton('verifies', function ($app) {
 
             $secretGeneratorName = config('verifies.secret.generator');
