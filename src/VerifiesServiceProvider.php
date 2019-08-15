@@ -31,7 +31,7 @@ class VerifiesServiceProvider extends ServiceProvider
             $codeGenerator = new $codeGeneratorClass();
 
             $smsProviderName = config('verifies.sms.provider');
-            $smsProviderClass = config("verifies.sms.providers.{$smsProviderName}.class");
+            $smsProviderClass = config("verifies.providers.{$smsProviderName}.class");
             $smsProvider = new $smsProviderClass();
 
             return new Verifies($secretGenerator, $codeGenerator, $smsProvider);

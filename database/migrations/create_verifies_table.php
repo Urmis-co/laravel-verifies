@@ -29,8 +29,6 @@ class CreateVerifiesTable extends Migration
             $table->integer('exception_code')->nullable();
             $table->text('exception')->nullable();
             $table->timestamps();
-
-            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 

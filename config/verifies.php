@@ -2,6 +2,9 @@
 
 return [
 
+    'max_tries' => 3,
+    'expires_in' => 120,
+
     'secret' => [
         'generator' => 'simple',
 
@@ -34,8 +37,8 @@ return [
 
         'kavenegar' => [
             'class' => Urmis\Verifies\SmsProviders\Kavenegar::class,
-            'key' => 'key',
-            'sender' => '100065995',
+            'key' => env('KAVENEGAR_KEY'),
+            'sender' => env('KAVENEGAR_SENDER'),
         ],
     ],
 
