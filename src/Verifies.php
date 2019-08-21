@@ -54,7 +54,7 @@ class Verifies
         $message = $this->prepareMessage($message, $verify);
 
         try {
-            $sms = $this->smsProvider->sendMessage($receiver, $message);
+            $sms = $this->smsProvider->sendMessage($receiver, $message, $verify->code);
         }
         catch (\Exception $e) {
             $verify->exception_code = -1;

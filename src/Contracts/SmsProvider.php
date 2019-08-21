@@ -16,14 +16,14 @@ abstract class SmsProvider
      *
      * @throws \Exception
      */
-    abstract public function sendMessage($receiver, $message);
+    abstract public function sendMessage($receiver, $message, $code);
 
     /**
      * Get provider config
      *
      * @return array
      */
-    public function getConfig(): array
+    public function getProviderConfig(): array
     {
         $provider = $this->getProviderName();
         $config = config("verifies.providers.{$provider}");

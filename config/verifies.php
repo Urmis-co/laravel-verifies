@@ -39,6 +39,10 @@ return [
             'class' => Urmis\Verifies\SmsProviders\Kavenegar::class,
             'key' => env('KAVENEGAR_KEY'),
             'sender' => env('KAVENEGAR_SENDER'),
+            'verify_lookup' => [
+                'enabled' => false,
+                'template' => '',
+            ],
         ],
     ],
 
