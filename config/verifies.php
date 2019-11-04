@@ -44,6 +44,14 @@ return [
                 'template' => '',
             ],
         ],
+
+        'farazsms' => [
+            'class' => Urmis\Verifies\SmsProviders\FarazSms::class,
+            'uname' => env('FARAZSMS_UNAME'),
+            'pass' => env('FARAZSMS_PASS'),
+            'from' => env('FARAZSMS_FROM'),
+            // TODO: 'pattern_code'
+        ],
     ],
 
 ];

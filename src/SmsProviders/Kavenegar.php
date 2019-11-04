@@ -24,5 +24,7 @@ class Kavenegar extends SmsProviderContract
             $template = $config['verify_lookup']['template'];
             $result = $api->VerifyLookup($receiver, $code, null, null, $template);
         }
+
+        return $result;
     }
 }
