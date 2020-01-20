@@ -39,4 +39,9 @@ class FarazSms extends SmsProviderContract
         $response = json_decode($response);
         return $response;
     }
+
+    public function sendTemplate($receiver, $template, $code, $token2, $token3)
+    {
+        throw new \Exception("sendTemplate function is not implemented in FarazSms Provider!");
+    }
 }

@@ -16,14 +16,18 @@ class Kavenegar extends SmsProviderContract
         $config = $this->getProviderConfig();
         $api = new \Kavenegar\KavenegarApi($config['key']);
 
-        if ( $config['verify_lookup']['enabled'] == false ) {
-            $sender = $config['sender'];
-            $result = $api->Send($sender, $receiver, $message);
-        }
-        else {
-            $template = $config['verify_lookup']['template'];
-            $result = $api->VerifyLookup($receiver, $code, null, null, $template);
-        }
+        $sender = $config['sender'];
+        $result = $api->Send($sender, $receiver, $message);
+
+        return $result;
+    }
+
+    public function sendTemplate($receiver, $template, $code, $token2, $token3)
+    {
+        $config = $this->getProviderConfig();
+        $api = new \Kavenegar\KavenegarApi($config['key']);
+
+        $result = $api->VerifyLookup($receiver, $code, $token2, $token3, $template);
 
         return $result;
     }

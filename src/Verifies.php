@@ -66,6 +66,34 @@ class Verifies
     }
 
     /**
+     * Send template verification code
+     *
+     * @param string $for
+     * @param string $receiver
+     * @param array $data
+     * @param string $template
+     * @param string $token2
+     * @param string $token3
+     * @param int $user_id
+     * @return Verify
+     */
+    public function sendTemplate(string $for, string $receiver, array $data, string $template, string $token2=null, string $token3=null, int $user_id=null)
+    {
+        $verify = $this->makeVerify($for, $receiver, $data, $user_id);
+
+        try {
+            $template = $this->smsProvider->sendTemplate($receiver, $template, $verify->code, $token2, $token3);
+        }
+        catch (\Exception $e) {
+            $verify->exception_code = -1;
+            $verify->exception = $e->getMessage();
+        }
+
+        $verify->save();
+        return $verify;
+    }
+
+    /**
      * Make new verify entry
      *
      * @param $for

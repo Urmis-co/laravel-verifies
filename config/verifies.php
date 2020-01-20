@@ -3,7 +3,7 @@
 return [
 
     'max_tries' => 3,
-    'expires_in' => 120,
+    'expires_in' => 180,
 
     'secret' => [
         'generator' => 'simple',
@@ -39,10 +39,6 @@ return [
             'class' => Urmis\Verifies\SmsProviders\Kavenegar::class,
             'key' => env('KAVENEGAR_KEY'),
             'sender' => env('KAVENEGAR_SENDER'),
-            'verify_lookup' => [
-                'enabled' => false,
-                'template' => '',
-            ],
         ],
 
         'farazsms' => [
@@ -50,7 +46,6 @@ return [
             'uname' => env('FARAZSMS_UNAME'),
             'pass' => env('FARAZSMS_PASS'),
             'from' => env('FARAZSMS_FROM'),
-            // TODO: 'pattern_code'
         ],
     ],
 

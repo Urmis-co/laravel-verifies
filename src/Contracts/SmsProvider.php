@@ -19,6 +19,13 @@ abstract class SmsProvider
     abstract public function sendMessage($receiver, $message, $code);
 
     /**
+     * Template sender function
+     *
+     * @throws \Exception
+     */
+    abstract public function sendTemplate($receiver, $template, $code, $token2, $token3);
+
+    /**
      * Get provider config
      *
      * @return array
